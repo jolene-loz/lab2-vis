@@ -8,7 +8,7 @@ fetch('attractions.json')
         function filterData(category) {
             const maxLength = 5;
 
-            if(category == 'all'){
+            if(category == null || "all"){
                 attractions.sort(function (a,b){
                     return a.visitors > b.visitors;
                 });
@@ -25,6 +25,7 @@ fetch('attractions.json')
         }
 
         let selector = document.querySelector("#attraction-category");
+        filterData(attractions);
         selector.addEventListener('change', function(event){
             attractions.filter(filterData(event.target.value));
             console.log(event.target.value);
